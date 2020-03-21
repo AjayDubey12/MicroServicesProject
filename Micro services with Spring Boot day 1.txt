@@ -1,0 +1,339 @@
+Service (API)
+
+Enterprise  Application
+=======================
+Some of the more common types of enterprise applications include the following:
+
+automated billing systems
+payment processing
+email marketing systems
+content management
+call center and customer support
+Customer Relationship Management (CRM)
+Enterprise Resource Planning (ERP)
+Business Intelligence
+Business Continuity Planning (BCP)
+HR Management
+Enterprise Application Integration (EAI)
+enterprise search
+messaging and collaboration systems.
+
+An enterprise application is the phrase used to describe applications (or software) that a business would use to assist the organization in solving enterprise problems. When the word "enterprise" is combined with "application," it usually refers to a software platform that is too large and too complex for individual or small business use.
+
+--------------------------------------
+Bank => withdraw,deposit,fundTransfer,
+
+C =>
+R =>
+U =>
+D =>
+
+Customer
+Bank
+Account
+Address
+
+Online Shopping Application (Domain Driven Development)
+=======================================================
+MFG
+Insurance 
+HEalthCare
+Banking
+Ecommerce domain
+
+Customer =>login,register
+Product  =>CRUD
+Payment  =>CRUD
+Order    =>CRUD
+-----------------------------
+PL  SL DAL  DL 
+              
+SOAP ->WSDL -> Top Down,Bootm up
+             wsgen -> JAva ->WSDL
+             wsimprt->WSDL  -> Java
+			 
+
+Restful Webservice
+=================
+If you are providing service (CRUD ->Domain Objects) via http urls
+
+GET 
+POST
+PUT/PATCH
+DELETE
+			 
+			 
+Domain Objects (5)
+===================
+Product =>CRUD
+
+Customer =>CRUD
+
+Order =>CRUD
+
+Payment =>CRUD
+
+User =>CRUD
+
+product-service  (.Net Web MVC) =>A Team   80 ->IIS   =>1 Instance (100 req)
+============================================================================
+http://localhost:8081/online-shopping/products     =>GET
+http://localhost:8081/online-shopping/products/101 =>GET
+http://localhost:8081/online-shopping/products/101 =>DELETE
+http://localhost:8081/online-shopping/products/101 =>PUT/PATCH
+http://localhost:8081/online-shopping/products     =>POST
+
+customer-service  (Java -Spring Boot)  =>B Team =>  8080
+
+===================================================
+http://localhost:8081/online-shopping/customers     =>GET
+http://localhost:8081/online-shopping/csustomers/101 =>GET
+http://localhost:8081/online-shopping/csustomers/101 =>DELETE
+http://localhost:8081/online-shopping/customers/101 =>PUT
+http://localhost:8081/online-shopping/customers     =>POST
+
+order-service  (Node JS -> Express JS)  => C Team  =>1212
+==================================================
+http://localhost:8081/online-shopping/orders      =>GET
+http://localhost:8081/online-shopping/orders/101 =>GET
+http://localhost:8081/online-shopping/orders/101 =>DELETE
+http://localhost:8081/online-shopping/orders/101 =>PUT
+http://localhost:8081/online-shopping/orders     =>POST
+
+ online-shopping/product                        product-service  ->  1111
+ online-shopping/csutomer                       customer-service ->  2222
+ online-shopping/order       Eureka Server      order-service    ->  3333
+ online-shopping/payment                        payment-service  ->  4444
+ online-shoppinng/user                          user-service     ->  5555
+
+Day1
+====
+1.What is MCA?
+================
+Microservices - also known as the microservice architecture - is an architectural style that structures an application as a collection of services that are
+
+	1.Highly maintainable and testable
+	2.Loosely coupled
+	3.Independently deployable
+	4.Organized around single business capabilities. 
+	  (Single Responsibility Principle)
+	
+The microservice architecture enables the continuous delivery/deployment of large, complex applications. It also enables an organization to evolve its technology stack.
+
+1.MCA Vs Monolithic
+
+2.Adantages of MCA
+	1.Highly maintainable and testable
+	2.Loosely coupled
+	3.Independently deployable
+	4.Organized around business capabilities.
+3.Challanges of MCA
+   1.Avaialabilty  
+   2.Scaling
+   3.Monitoring -logs,loads,heap,memory ->actuator -> Admin Server
+   4.Integration 
+4.Orchestration and Choreography
+
+5.What is TDD,BDD,DDD,MDD?
+6.SOLID Design Principles
+7.Design Patterns(creational,Structural,Behavioural)
+8.12 Factor Application
+
+What is DDD?
+=============
+Domain Driven Design is a way of looking at software from top down.
+When we are developing a software our focus should not be primarily on technology,It should be primaryly on business or whatever activity we are trying to assist with software,domain
+The domain is the business that we are trying to solve/assist with software.
+The domain can be any business domain
+
+Aviation domain
+Railway domain
+Banking domain
+Insurance domain
+Manufacturing domain
+Ecommerce domain
+
+Specifically we approach that by trying to develop the models of that domain and make our software confirmed to that.
+
+What DDD gives us?
+===================
+Strategic Design Tool
+Tactical Design Tools
+
+
+Service
+Project
+Layers(Service/Data Access Layer,Controller)
+Modules
+Design Patterns
+OOP
+Classes
+Objects
+Exe/Jar/war/ear
+
+Why We should go for DDD?
+1.	To improve your craft
+2.	As a software developer you want to grow
+3.	You want to take a responsibility
+4.	You want to design things from scratch
+
+It’s not a customers job what they want (Steve Jobs)
+What problems this customer is going to face in the future
+If you want to give any new feature it should go from your side
+
+Your architecture might be fabulous but it’s the end user ultimately who decides whether your system is fabulous or not.
+
+A system that doesn’t solve the business needs is of no use to any one, no matter how pretty it looks or how well architected it’s infrastructure.
+
+##########
+What is the difference between Orchestration and Choreography in Microservices architecture?
+################ 
+In Orchestration, we rely on a central system to control and call various Microservices to complete a task.
+
+In Choreography, each Microservice works like a State Machine and reacts based on the input from other parts. 
+
+Orchestration is a tightly coupled approach for integrating Microservices.
+
+But Choreography introduces loose coupling. Also, Choreography based systems are more flexible and easy to change than Orchestration based systems.
+
+Orchestration is often done by synchronous calls. But choreography is done by asynchronous calls. 
+The synchronous calls are much simpler compared to asynchronous communication. 
+
+
+                                            withdraw(source,amount)
+fundTransfer(source,desitnation,amount)
+                                             deposit(desination,amount)
+--------------------------------------------------------------
+S-Single Responsibilty Principle
+
+           We all know that requirements change over time. Each of them also changes the responsibility of at least one class. The more responsibilities your class has, the more often you need to change it. If your class implements multiple responsibilities, they are no longer independent of each other.
+
+You need to change your class as soon as one of its responsibilities changes. That is obviously more often than you would need to change it if it had only one responsibility.
+	One of them is the Java Persistence API (JPA) specification. It has one, and only one, responsibility: Defining a standardized way to manage data persisted in a relational database by using the object-relational mapping concept.
+-----------------------------------------------------------
+O-Open Close Principle 
+
+
+       Shape
+
+Rect    Circle 	   Triangle
+
+          class PaintBrush{
+		  
+		  
+		  drawShape(Shape s){
+		  s.draw();
+		  }
+		  
+  drawShape(RectObj);
+		   	  
+		  
+		  }
+
+----------------------------------------------------------------  
+
+L-Liscovs Substituion Principle
+The principle defines that objects of a superclass shall be replaceable with objects of its subclasses without breaking the application. That requires the objects of your subclasses to behave in the same way as the objects of your superclass.
+
+--------------------------------------------
+
+I-Interface segration principle
+The interface segregation principle (ISP) states that no client should be forced to depend on methods it does not use.
+
+interface Flyable{
+void fly();
+}
+
+interface Drivable{
+void drive();
+}
+
+
+              Vehicle 
+
+Bus    Truck    Bike 	 implements Drivable
+Aeroplane    Helicapter   implement Flyable,Drivable		  
+			  
+----------------------------------------------------------------------------
+
+D-Dependency Injection
+
+          interface EmployeeInterface{
+           Collection<Employee> getEmployeeList()
+		  }
+
+
+
+=========================
+The Twelve Factors
+==========================
+          This is best practices to develop spring cloud native applications
+
+I. Codebase
+One codebase tracked in revision control, many deploys
+II. Dependencies
+Explicitly declare and isolate dependencies
+III. Config ---> config server
+Store config in the environment
+IV. Backing services
+Treat backing services as attached resources
+V. Build, release, run
+Strictly separate build and run stages
+VI. Processes
+Execute the app as one or more stateless processes
+VII. Port binding
+Export services via port binding
+VIII. Concurrency
+Scale out via the process model
+IX. Disposability
+Maximize robustness with fast startup and graceful shutdown
+X. Dev/prod parity
+Keep development, staging, and production as similar as possible
+XI. Logs ---> Zipkin server
+Treat logs as event streams
+XII. Admin processes  ---> Admin server / Admin clients
+Run admin/management tasks as one-off processes
+-----------------------------------------------------------------------------------------------------
+
+Spring Cloud Config Server
+===========================
+Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system. With the Config Server you have a central place to manage external properties for applications across all environments. The concepts on both client and server map identically to the Spring Environment and PropertySource abstractions, so they fit very well with Spring applications, but can be used with any application running in any language. As an application moves through the deployment pipeline from dev to test and into production you can manage the configuration between those environments and be certain that applications have everything they need to run when they migrate. The default implementation of the server storage backend uses git so it easily supports labelled versions of configuration environments, as well as being accessible to a wide range of tooling for managing the content. It is easy to add alternative implementations and plug them in with Spring configuration.
+
+
+In Local File system
+======================
+
+By default cloud config server loads the properites file from config folder
+
+In Git
+======
+By default cloud config server loads the properites file from git  repository
+
+To make it to locaal fs
+
+spring.profiles.active=native
+
+@EnableConfigServer
+@SpringBootApplication
+public class ConfigServerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ConfigServerApplication.class, args);
+	}
+
+}
+
+Spring Cloud Config Client
+===========================
+A Spring Boot application can take immediate advantage of the Spring Config Server (or other external property sources provided by the application developer). It also picks up some additional useful features related to Environment change events.
+
+
+
+
+
+
+
+
+
+
+
